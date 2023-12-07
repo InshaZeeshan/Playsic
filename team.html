@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"><a href="{{ url_for('index') }}">PLAYSIC</a></div>
+
+            <ul>
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                <li class="try-hover"><a href="{{ url_for('team') }}">TEAM</a></li>
+            </ul>
+        </div>
+    </nav>
+   
+        <div class="team">
+            <h1>Our Team</h1>
+            <p>We are a dedicated team of music enthusiasts and developers who have come together to bring you the best Spotify playlist creation experience.
+            <br>Meet our team members:</p>
+        
+        
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='css/insha.png') }}" alt="Team Member 1">
+                <h3>INSHA ZEESHAN</h3><br>
+                <p style="font-size: 13px; color: #66b080;">Founder & Co-Developer</p><br>
+                <p style="font-size: 18px;">Insha is passionate about music and technology. She's the brains behind the playlist recommendation algorithm.</p>
+            </div>
+    
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='css/pragya.png') }}" alt="Team Member 2">
+                <h3>PRAGYA MISHRA</h3><br>
+                <p style="font-size: 13px; color: #66b080;">Developer & Designer</p><br>
+                <p style="font-size: 18px;">Pragya ensures that our application is user-friendly and visually appealing, making your playlist creation a breeze.</p>
+            </div>
+        
+        </div>
+
+    <div class="image-inspiration">
+        PI: teahub.io
+    </div>
+
+</body>
+
+</html>

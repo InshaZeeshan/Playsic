@@ -1,0 +1,153 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.png');
+    background-size: cover;
+}
+
+h1 {
+    color: #1DB954;
+    font-size: 50px;
+}
+
+.container {
+    background-color: rgba(7, 7, 7, 0.735);
+    border: 1px solid #282828;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+input, select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #282828;
+    border-radius: 5px;
+    background-color: #121212;
+    color: #fff;
+}
+
+.checkbox-container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.checkbox-container input[type="checkbox"] {
+order: 2; /* Change the order to place the checkbox on the right */
+margin-left: 10px; /* Adjust this value to set the desired space between checkbox and label */
+width: 20px; /* Adjust the width of the checkboxes */
+}
+
+.checkbox-container label {
+order: 1; /* Change the order to place the label on the left */
+margin-right: 10px; /* Adjust this value to set the desired space between checkbox and label */
+}
+
+/* ... (other CSS styles) ... */
+
+.checkbox-container input[type="checkbox"] {
+    display: none; /* Hide the default checkbox */
+}
+
+.checkbox-container label {
+    position: relative;
+    padding-left: 25px; /* Adjust the space for the custom checkbox */
+    cursor: pointer;
+    color: #fff;
+}
+
+/* ... (other CSS styles) ... */
+
+.checkbox-container label::before {
+    content: '';
+    position: absolute;
+    top: 2px; /* Adjust the vertical alignment of the custom checkbox */
+    left: 0;
+    width: 20px; /* Adjust the width of the custom checkbox */
+    height: 20px; /* Adjust the height of the custom checkbox */
+    border: 2px solid #1DB954; /* Checkbox border color */
+    background-color: #1DB954; /* Green background color for the checkbox */
+    transition: background-color 0.3s, transform 0.3s; /* Add transition for color change */
+}
+
+.checkbox-container label::after {
+    content: '✔'; /* Tick symbol */
+    position: absolute;
+    top: -1px; /* Adjust the vertical position of the tick symbol */
+    left: 2px; /* Adjust the horizontal position of the tick symbol */
+    color: #000; /* Black color for the tick symbol */
+    font-size: 18px; /* Adjust the size of the tick symbol */
+    opacity: 0; /* Initially hide the tick */
+    transform: scale(0); /* Initially scale down the tick */
+    transition: opacity 0.3s, transform 0.3s; /* Add transition for visibility and scaling */
+}
+
+.checkbox-container input[type="checkbox"]:checked + label::before {
+    background-color: #1DB954; /* Change the background color when checked */
+    border-color: #1DB954; /* Change the border color when checked */
+}
+
+.checkbox-container input[type="checkbox"]:checked + label::after {
+    opacity: 1; /* Show the tick */
+    transform: scale(1); /* Scale up the tick */
+}
+
+/* ... (rest of the CSS styles) ... */
+
+
+/* ... (rest of the CSS styles) ... */
+
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container button {
+    background-color: #1DB954;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #159c45;
+}
+
+.button-container button#generate-default {
+    background-color: #1DB954; /* Spotify green */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold; /* Apply bold font */
+}
+
+.button-container button#generate-default:hover {
+    background-color: #25a953; /* Darker shade of Spotify green on hover */
+}
+
+.confirmation-message {
+    display: none;
+    margin-top: 20px;
+    color: #1DB954;
+    font-size: 18px;
+}

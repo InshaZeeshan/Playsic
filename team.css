@@ -1,0 +1,116 @@
+* {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('background.png');
+    background-size: cover;
+    font-family: 'Gotham', sans-serif;
+    color: white; 
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.45);
+    height: 85px;
+    margin-bottom: 20px;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Gotham', sans-serif;
+}
+
+.logo a {
+    font-size: 24px;
+    margin: 25px;
+    color: white;
+    font-weight: 650;
+    border-radius: 50%;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+}
+
+li a {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+
+nav li.try-hover a {
+    color: #1db954;
+}
+
+nav li.try-hover a:hover {
+    color: white;
+}
+
+h1 {
+    color: #1db954;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h3{
+    color: #1db954;
+    text-align: center;
+    display: contents;
+    font-size: 50px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.image-inspiration {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+.navbar a:hover {
+    color: #1db954;
+}
+
+.team-member {
+    display: inline-flex;
+    flex: 1;
+    margin-left: 50px;
+    padding: 20px;
+    background-color: rgba(7, 7, 7, 0.735);
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgba(5, 5, 5, 0.856);
+    font-family: 'Gotham', sans-serif;
+    width: 40%;
+    height: 310px;
+}
+
+.team-member p{
+    color: #ffffff;
+    display: contents;
+}
+
+.team-member img {
+    border-radius: 15px;
+    width: 230px;
+    height: auto;
+    display: block;
+    margin-right: 20px;
+}

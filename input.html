@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/input.css')}}">
+    <title>PLAYSIC - Personalize Your Music Experience</title>
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/nouislider@16.8.3/distribute/nouislider.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <h1>Personalize Your Music Experience</h1>
+    <br><br><br>
+    <div class="container">
+        <form id="playlist-form" action="/create_playlist" method="post">
+            <div class="input-container">
+                <label for="playlist-name">Playlist Name:</label>
+                <input type="text" id="playlist-name" name="playlistName" placeholder="Name should not start with a number, special character or emoticons">
+                
+                <button type="button" id="generate-default">Generate Default Name</button>
+                <div class="button-container">
+                    <button type="button" id="next1">Next</button>
+                </div>
+            </div>
+            
+
+            <div class="input-container" style="display: none;">
+                <label for="number-of-tracks">Number of Tracks:</label>
+                <input type="number" id="number-of-tracks" name ="numTracks" placeholder="Number of Tracks should be below 50">
+                <div class="button-container">
+                    <button type="button" id="back2">Back</button>
+                    <button type="button" id="next2">Next</button>
+                </div>
+            </div>
+
+<!-- Genre Checkbox Options -->
+<div class="input-container" style="display: none;">
+    <label for="genre">Genre:</label>
+    <div class="checkbox-container">
+        <input type="checkbox" id="pop" name="playlistGenre" value="pop">
+        <label for="pop">Pop</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="rock" name="playlistGenre" value="rock">
+        <label for="rock">Rock</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="hip-hop" name="playlistGenre" value="hip-hop">
+        <label for="hip-hop">Hip Hop</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="electronic" name="playlistGenre" value="electronic">
+        <label for="electronic">Electronic</label>
+    </div>
+    
+    <div class="checkbox-container">
+        <input type="checkbox" id="rnb" name="playlistGenre" value="rnb">
+        <label for="rnb">R&B</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="lo-fi" name="playlistGenre" value="lo-fi">
+        <label for="lo-fi">Lo-fi</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="folk" name="playlistGenre" value="folk">
+        <label for="folk">Folk</label>
+    </div>
+    <div class="button-container">
+        <button type="button" id="back3">Back</button>
+        <button type="button" id="next3">Next</button>
+    </div>
+</div>
+
+            <div class="input-container" style="display: none;">
+                <label for="languages">Languages:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="en" name="playlistLanguages" value="en">
+                    <label for="en">English</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="hi" name="playlistLanguages" value="hi">
+                    <label for="hi">Hindi</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="es" name="playlistLanguages" value="es">
+                    <label for="es">Spanish</label>
+                </div>
+                
+                <div class="checkbox-container">
+                    <input type="checkbox" id="pa" name="playlistLanguages" value="pa">
+                    <label for="pa">Punjabi</label>
+                </div>
+                <div class="button-container">
+                    <button type="button" id="back4">Back</button>
+                    <button type="button" id="next4">Next</button>
+                </div>
+            </div>
+<!-- Year Range Input -->
+<div class="input-container" style="display: none;">
+    <label for="release-year">Release Year Range:</label>
+    <input type="number" id="release-year-start" name="releaseYearStart" placeholder="Start Year">
+    <input type="number" id="release-year-end" name="releaseYearEnd" placeholder="End Year">
+    <div class="button-container">
+        <button type="button" id="back5">Back</button>
+        <button type="submit">Create Playlist</button>
+    </div>
+</div>
+
+
+           
+        </form>
+    </div>
+
+
+    
+    <script>
+        const form = document.getElementById("playlist-form");
+        const nextButtons = document.querySelectorAll("button[id^='next']");
+        const backButtons = document.querySelectorAll("button[id^='back']");
+        const generateDefaultButton = document.getElementById("generate-default");
+        const playlistNameInput = document.getElementById("playlist-name");
+        const confirmationMessage = document.querySelector(".confirmation-message");
+        let currentStep = 0;
+    
+        generateDefaultButton.addEventListener("click", function () {
+            const defaultName = generateDefaultPlaylistName();
+            playlistNameInput.value = defaultName;
+        });
+    
+        function generateDefaultPlaylistName() {
+            const storedValue = localStorage.getItem('playlistCount');
+            let count = 1;
+            if (storedValue) {
+                count = parseInt(storedValue) + 1;
+            }
+            localStorage.setItem('playlistCount', count);
+            return "Playlist " + count;
+        }
+    
+        nextButtons.forEach((button, index) => {
+            button.addEventListener("click", function () {
+                const currentInputContainer = form.querySelector(`.input-container:nth-child(${currentStep + 1})`);
+                const nextInputContainer = form.querySelector(`.input-container:nth-child(${currentStep + 2})`);
+    
+                if (!isInputContainerFilled(currentInputContainer)) {
+                    alert("Please fill in the current input before proceeding.");
+                    return;
+                }
+    
+                if (currentStep === 0 && !isValidPlaylistName(playlistNameInput.value.trim())) {
+                    alert("Invalid playlist name. Please follow the specified criteria.");
+                    return;
+                }
+    
+                currentInputContainer.style.display = "none";
+                nextInputContainer.style.display = "block";
+                currentStep++;
+    
+                if (currentStep === nextButtons.length - 1) {
+                    confirmationMessage.style.display = "block";
+                }
+            });
+        });
+    
+        backButtons.forEach((button, index) => {
+            button.addEventListener("click", function () {
+                const currentInputContainer = form.querySelector(`.input-container:nth-child(${currentStep + 1})`);
+                const previousInputContainer = form.querySelector(`.input-container:nth-child(${currentStep})`);
+    
+                currentInputContainer.style.display = "none";
+                previousInputContainer.style.display = "block";
+                currentStep--;
+    
+                confirmationMessage.style.display = "none";
+            });
+        });
+    
+        
+
+        form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const playlistName = playlistNameInput.value.trim();
+    if (!isValidPlaylistName(playlistName)) {
+        alert("Invalid playlist name. Please follow the specified criteria.");
+        return;
+    }
+
+    if (!isFormFilled()) {
+        alert("Please fill in all fields before proceeding.");
+        return;
+    }
+
+    const response = await fetch('/create_playlist', {
+        method: 'POST',
+        body: new FormData(form)
+    });
+
+    const result = await response.text();
+    
+    // Check for successful playlist creation and track addition
+    if (result.includes("created and tracks added successfully!")) {
+        alert(result);
+        window.location.href = "/thankyou"; // Redirect to Flask route "/thankyou"
+    } else {
+        alert(result); // Display other messages
+    }
+});
+
+
+
+    
+        function isValidPlaylistName(name) {
+            return !/^[0-9~!@#$%^&*()_+={}|[\]\\:";'<>?,./`]/.test(name);
+        }
+    
+        function isInputContainerFilled(container) {
+            const inputElements = container.querySelectorAll('input, select');
+            for (let input of inputElements) {
+                if (input.value.trim() === '') {
+                    return false;
+                }
+            }
+            return true;
+        }
+    
+        function isFormFilled() {
+            const inputContainers = form.querySelectorAll('.input-container');
+            for (let i = 0; i < inputContainers.length; i++) {
+                if (!isInputContainerFilled(inputContainers[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+
+        const numberOfTracksInput = document.getElementById("number-of-tracks");
+
+    numberOfTracksInput.addEventListener("input", function() {
+        const enteredValue = parseInt(numberOfTracksInput.value, 10);
+
+        if (enteredValue > 50) {
+            alert("Number of tracks should be 50 or less.");
+            numberOfTracksInput.value = 50; // Reset the value to 50
+        }
+    });
+
+
+    const releaseYearStartInput = document.getElementById("release-year-start");
+const releaseYearEndInput = document.getElementById("release-year-end");
+
+releaseYearStartInput.addEventListener("change", validateReleaseYearInput);
+releaseYearEndInput.addEventListener("change", validateReleaseYearInput);
+
+function validateReleaseYearInput() {
+    const startYear = parseInt(releaseYearStartInput.value, 10);
+    const endYear = parseInt(releaseYearEndInput.value, 10);
+
+    if (startYear && endYear) {
+        if (startYear > endYear) {
+            alert("Start year should be earlier than the end year.");
+            releaseYearStartInput.value = "";
+            releaseYearEndInput.value = "";
+            return;
+        }
+
+        const currentYear = new Date().getFullYear();
+
+        if (startYear < 1900 || startYear > currentYear) {
+            alert("Please enter a valid start year between 1900 and the current year.");
+            releaseYearStartInput.value = "";
+            return;
+        }
+
+        if (endYear < 1900 || endYear > currentYear) {
+            alert("Please enter a valid end year between 1900 and the current year.");
+            releaseYearEndInput.value = "";
+            return;
+        }
+    }
+}
+
+
+    </script>
+    
+    
+
+    
+    
+</body>
+</html>
