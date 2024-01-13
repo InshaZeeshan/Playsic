@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAYSIC</title>
+    <link rel = "stylesheet" href = "{{ url_for('static', filename= 'css/index.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png?') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"><a href="C:\Users\hp\SPG\templates\index.html">PLAYSIC</a></div>
+
+            <ul>
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+
+
+                <li><a href="{{ url_for('team') }}">TEAM</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    
+    <div class="container">
+
+        <p>Welcome to the ultimate Spotify playlist creation experience, where music meets magic! <br>
+            Create your perfect playlist effortlessly and let the rhythm of your life play on.</p>
+        
+            <a href="https://accounts.spotify.com/authorize?client_id=071e87f9bc66436889c57d3af513e1fb&response_type=code&redirect_uri=http://127.0.0.1:5000/callback&scope=playlist-modify-private%20playlist-modify-public" id="spotify-auth-link">
+                <button>Authorize your Spotify</button>
+            </a>
+            
+
+    </div>
+
+    <div class="image-inspiration">
+        PI: teahub.io
+    </div>
+
+</body>
+</html>

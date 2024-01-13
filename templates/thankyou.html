@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAYSIC</title>
+    <link rel = "stylesheet" href = "{{ url_for('static', filename= 'css/index.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"><a href="C:\Users\hp\SPG\templates\index.html">PLAYSIC</a></div>
+
+            <ul>
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+
+
+                <li><a href="{{ url_for('team') }}">TEAM</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    
+    <div class="container">
+
+        <p>Thanks for choosing PLAYSIC! Check out your custom playlist on your spotify and get ready to rock those tunes and enjoy the beats!</p>
+        
+            <p>You can join the ride again by clicking the HOME button on the top right side of your screen.</p>
+            
+
+    </div>
+
+    <div class="image-inspiration">
+        PI: teahub.io
+    </div>
+
+</body>
+</html>

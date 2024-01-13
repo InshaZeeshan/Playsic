@@ -1,0 +1,49 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - SPOTIFY PLAYLIST GENERATOR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+    <!-- Add other stylesheets or scripts if needed -->
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"><a href="{{ url_for('index') }}">PLAYSIC</a></div>
+
+            <ul>
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                <li><a href="{{ url_for('team') }}">TEAM</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <h3>Create your sick playlists with PlaySic, where 'sic' in music isn't just cool, it's mu-SICK-ally cool.</h3>
+
+    <div class="container">
+        <!-- Add your project description here -->
+        <p>Welcome to the SPOTIFY PLAYLIST GENERATOR, where the magic of music meets the ease of creation. Our vision is to empower music enthusiasts with a seamless and personalized playlist-building experience.</p>
+        
+        <p>With the SPOTIFY PLAYLIST GENERATOR, you can effortlessly curate your ideal playlists, tailored to your unique taste and mood. Whether you're looking for the perfect workout mix, a relaxing background for work, or a high-energy playlist for your next road trip, we've got you covered.</p>
+
+        <p>Experience the joy of music discovery as our innovative algorithm suggests tracks based on your preferences, ensuring that each playlist is a reflection of your musical identity. The process is simple: authorize your Spotify account, and let the SPOTIFY PLAYLIST GENERATOR turn your musical aspirations into reality.</p>
+
+        <p>Join us on this musical journey, where creating the perfect playlist is not just an art but a delightful experience. Let the rhythm of your life play on!</p>
+    </div>
+
+    <div class="image-inspiration">
+        PI: teahub.io
+    </div>
+
+</body>
+
+</html>
